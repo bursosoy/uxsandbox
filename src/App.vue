@@ -1,12 +1,17 @@
 <template>
-  <div>anyNumber: {{ anyNumber }}</div>
+  <!-- <div>anyNumber: {{ anyNumber }}</div>
   <div>anyString: {{ anyString }}</div>
   <div>anyBoolean: {{ anyBoolean }}</div>
   <div>anyArray at 1: {{ anyArray[1] }}</div>
   <div>anyObject color: {{ anyObject.color }}</div>
 
-  <div v-if="2<1">I'm a div</div>
-  <!-- if you want to render it and just hide, use v-show. if you want to save on data loading, use v-if -->
+  <div v-if="anyNumber === 0 && anyBoolean === false">I'm a div</div> -->
+  <!-- <div>{{ checkUser("Carlo") }}</div> -->
+
+  <!-- <button @click="logName">Say Name</button>
+  <button @click="logNewName('Kiyu')">Say New Name</button> -->
+  <!-- <button @click="logNewName(checkUser('Carlo'))">Check User</button> -->
+  <div v-if="checkUser('Kiyu') && anyNumber === 0">Show me if its Kiyu!</div>
 </template>
 
 <script>
@@ -22,6 +27,33 @@ export default {
 
       isDivShown: true // Boolean
     }
+  },
+  methods:{
+    logName(){ // basic type -> performs tasks
+      console.log("Anthony")
+      console.log("Dog")
+      var myNumber = 1+1
+      myNumber = 8
+      console.log(myNumber)
+    },
+
+    logNewName(newName){ // accepts arguments and passes it to its parameter
+      console.log(newName + " Tran")
+    },
+
+    logAge(additionalAge){ // accepts argument and returns something
+      return additionalAge * 2
+    },
+
+    checkUser(name){
+      if(name === "Kiyu"){
+        return true
+      }
+      else{
+        return false
+      }
+    }
+
   }
 }
 </script>
