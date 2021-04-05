@@ -39,7 +39,7 @@ export default {
     data(){
         return{
             item1:{
-                label: "Beef Steak",
+                label: "Noodle",
                 isHovered: false,
                 price: 10.00,
                 quantity: 0,
