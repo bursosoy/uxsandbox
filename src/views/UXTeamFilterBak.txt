@@ -1,0 +1,82 @@
+<template>
+  <div class="togglegroup">
+    <div class="toggle" :class="{'pink':isSeniorShow}" @click="isSeniorShow = !isSeniorShow">
+      {{ isSeniorShow ? "Hide" : "Show"}} Seniors
+    </div>
+    <div class="toggle" :class="{'pink':isJuniorShow}" @click="isJuniorShow = !isJuniorShow">
+      {{ isJuniorShow ? "Hide" : "Show"}} Juniors
+    </div>
+  </div>
+  <br />
+  <div class="parentcard">
+    <div v-for="member in memberList" :key="member">
+      <div v-if="checkDisplay(member.level)" class="namecard">{{ member.name }} : {{ member.level }}</div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      isSeniorShow: true,
+      isJuniorShow: true,
+      memberList: [
+        {name: 'Anthony', level: 'Senior'},
+        {name: 'Kleine', level: 'Senior'},
+        {name: 'Kiyu', level: 'Senior'},
+        {name: 'Mick', level: 'Senior'},
+        {name: 'Michelle', level: 'Junior'},
+        {name: 'Jarvey', level: 'Junior'},
+      ],
+    }
+  },
+  methods: {
+    checkDisplay(level) {
+      if (level === 'Junior' && this.isJuniorShow === true) {
+        return true
+      } else if (level === 'Senior' && this.isSeniorShow === true) {
+        return true
+      } else {
+        return false
+      }
+    },
+  },
+}
+</script>
+
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap');
+div {
+  font-family: Source Sans Pro;
+  font-size: 1.5rem;
+}
+
+.togglegroup {
+  display: inline-flex;
+  .toggle {
+    background-color: #009fd9;
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 0.75rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .pink{
+        background-color: rgb(228, 162, 173);
+        color: #111;
+    }
+}
+
+.parentcard {
+  display: inline-flex;
+  flex-direction: column;
+  .namecard {
+    background-color: #eee;
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 0.75rem;
+  }
+}
+</style>
